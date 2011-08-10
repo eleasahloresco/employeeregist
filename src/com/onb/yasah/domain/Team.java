@@ -22,7 +22,7 @@ public class Team {
 	@Column(name = "TEAM_ID")
 	private Long id;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.EAGER)
 	private ProjectManager teamLead;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
