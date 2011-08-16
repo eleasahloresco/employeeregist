@@ -3,25 +3,16 @@ package com.onb.yasah.domain;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
-public class Team {
+public class Team extends AbstractModel{
 
-	@Id
-	@GeneratedValue
-	@Column(name = "TEAM_ID")
-	private Long id;
-	
 	@OneToOne(fetch = FetchType.EAGER)
 	private ProjectManager teamLead;
 	
@@ -30,14 +21,6 @@ public class Team {
 			joinColumns = { @JoinColumn(name = "TEAM_ID") }, 
 			inverseJoinColumns = { @JoinColumn(name = "EMPLOYEE_ID") })
 	private Set<Employee> listOfMembers = new HashSet<Employee>();
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Employee getTeamLead() {
 		return teamLead;

@@ -2,16 +2,12 @@ package com.onb.yasah.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Table;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Employee {
+public class Employee extends AbstractModel{
 	
 	public Employee(){
 		
@@ -24,10 +20,7 @@ public class Employee {
 		this.setEmail(employee.getEmail());
 	}
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
-	@Column(name = "EMPLOYEE_ID")
-	private Long id;
+	
 	
 	@Column(name = "FIRST_NAME")
 	private String firstName;
@@ -41,12 +34,6 @@ public class Employee {
 	@Column(name = "EMAIL")
 	private String email;
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -110,16 +97,5 @@ public class Employee {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName
-				+ ", middleName=" + middleName + ", lastName=" + lastName + "]";
-	}
-
-	
-	
-	
-	
-	
 	
 }
